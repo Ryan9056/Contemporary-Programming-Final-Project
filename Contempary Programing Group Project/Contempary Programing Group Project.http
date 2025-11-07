@@ -1,0 +1,6 @@
+@Contempary_Programing_Group_Project_HostAddress = http://localhost:5235
+
+GET {{Contempary_Programing_Group_Project_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
