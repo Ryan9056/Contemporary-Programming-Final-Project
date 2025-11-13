@@ -1,39 +1,46 @@
-using Microsoft.EntityFrameworkCore;
-using Contemporary_Programming_Final_Project.Models;
 using Contemporary_Programming_Final_Project.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddOpenApiDocument();
+
+// ✅ Wire up EF Core with your connection string
 builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("AppDbContext")));
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+// (Optional) Auto-apply any pending migrations at startup (handy in dev)
+using (var scope = app.Services.CreateScope())
 {
-    app.MapOpenApi();
-    app.UseSwaggerUi(options =>
-    {
-        options.DocumentPath = "/openapi/v1.json";
-    });
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.Migrate();
 }
+
+// Configure the HTTP request pipeline.
+    if (app.Environment.IsDevelopment())
+    {
+        // Use NSwag middleware to serve the OpenAPI document and Swagger UI
+        app.UseOpenApi();
+        app.UseSwaggerUi3(options =>
+        {
+            options.DocumentPath = "/openapi/v1.json";
+        });
+    }
 
 app.UseHttpsRedirection();
 app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapStaticAssets();
-
 app.MapControllers();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}")
-    .WithStaticAssets();
-
+    ;
 
 app.Run();
