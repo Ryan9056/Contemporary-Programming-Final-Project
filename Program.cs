@@ -1,12 +1,13 @@
 using Microsoft.EntityFrameworkCore;
-using TodoApi.Models;
+using Contemporary_Programming_Final_Project.Models;
+using Contemporary_Programming_Final_Project.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddOpenApiDocument();
-builder.Services.AddDbContext<TodoContext>(options =>
+builder.Services.AddDbContext<AppDbContext>(options =>
 
 var app = builder.Build();
 

@@ -1,8 +1,10 @@
-namespace TodoApi.Models;
+namespace Contemporary_Programming_Final_Project.Models;
 
-public class TodoItem
+public class TeamMember
 {
-    public long Id { get; set; }
-    public string? Name { get; set; }
-    public bool IsComplete { get; set; }
+    public int Id { get; set; }
+        public required string FullName { get; set; }
+        public DateTime Birthdate { get; set; }
+        public required string CollegeProgram { get; set; }
+        public required string YearInProgram { get; set; }
 }
