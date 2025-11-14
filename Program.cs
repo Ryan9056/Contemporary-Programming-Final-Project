@@ -1,5 +1,8 @@
 using Contemporary_Programming_Final_Project.Data;
 using Microsoft.EntityFrameworkCore;
+using NSwag.AspNetCore;            // for UseOpenApi / UseSwaggerUi
+using NSwag.Generation.AspNetCore; // for AddOpenApiDocument
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,9 +28,8 @@ using (var scope = app.Services.CreateScope())
     {
         // Use NSwag middleware to serve the OpenAPI document and Swagger UI
         app.UseOpenApi();
-        app.UseSwaggerUi3(options =>
+        app.UseSwaggerUi(options =>
         {
-            options.DocumentPath = "/openapi/v1.json";
         });
     }
 
