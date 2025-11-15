@@ -11,4 +11,7 @@ public class AppDbContext : DbContext
     }
 
     public DbSet<TeamMember> TeamMembers { get; set; } = null!;
+
+    public DbSet<Hobby> Hobbies { get; set; }
+
 }
