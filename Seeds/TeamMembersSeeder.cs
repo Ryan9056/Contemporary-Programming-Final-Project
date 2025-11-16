@@ -15,7 +15,6 @@ namespace Contemporary_Programming_Final_Project.Seeds
             {
                 new TeamMember
                 {
-                    Id = 001,
                     FullName = "Corey DeRossett",
                     Birthdate = new DateTime(1990, 11, 9),
                     CollegeProgram = "Software Development",
@@ -23,7 +22,6 @@ namespace Contemporary_Programming_Final_Project.Seeds
                 },
                 new TeamMember
                 {
-                    Id = 002,
                     FullName = "Ryan Wagner",
                     Birthdate = new DateTime(2003, 07, 13),
                     CollegeProgram = "Information Technology",
@@ -31,7 +29,6 @@ namespace Contemporary_Programming_Final_Project.Seeds
                 },
                 new TeamMember
                 {
-                    Id = 003,
                     FullName = "Jimeir Hales",
                     Birthdate = new DateTime(2001, 04, 05),
                     CollegeProgram = "Information Technology",
@@ -39,7 +36,6 @@ namespace Contemporary_Programming_Final_Project.Seeds
                 },
                 new TeamMember
                 {
-                    Id = 004,
                     FullName = "Joseph Hankins",
                     Birthdate = new DateTime(2006, 06, 03),
                     CollegeProgram = "Information Technology",

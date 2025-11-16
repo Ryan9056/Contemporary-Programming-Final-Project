@@ -6,17 +6,16 @@ using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//configuring database context with sql server
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("AppDbContext")));
-
 builder.Services.AddControllersWithViews();
-builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApiDocument(config =>
 {
     config.Title = "Contemporary Programming Final";
     config.Version = "v1";
 });
+
+// Wire up EF Core with your connection string
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("AppDbContext")));
 
 var app = builder.Build();
 
