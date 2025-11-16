@@ -12,9 +12,16 @@ namespace Contemporary_Programming_Final_Project.Seeds
                 TeamMemberSeeder.Seed(context);
             }
 
+            /*
             if (!context.Hobbies.Any())
             {
                 HobbySeeder.Seed(context);
+            }
+            */
+
+            if (!context.Classes.Any())
+            {
+                ClassesSeeder.Seed(context);
             }
         }
     }
