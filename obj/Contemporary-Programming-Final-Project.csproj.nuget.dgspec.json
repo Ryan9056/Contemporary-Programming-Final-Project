@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\cdero\\OneDrive - University of Cincinnati\\UC\\Contemporary Programming\\Final Project\\Contemporary-Programming-Final-Project\\Contemporary-Programming-Final-Project.csproj": {}
+    "C:\\Users\\hanki\\Documents\\GitHub\\Contemporary-Programming-Final-Project\\Contemporary-Programming-Final-Project.csproj": {}
   },
   "projects": {
-    "C:\\Users\\cdero\\OneDrive - University of Cincinnati\\UC\\Contemporary Programming\\Final Project\\Contemporary-Programming-Final-Project\\Contemporary-Programming-Final-Project.csproj": {
+    "C:\\Users\\hanki\\Documents\\GitHub\\Contemporary-Programming-Final-Project\\Contemporary-Programming-Final-Project.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\cdero\\OneDrive - University of Cincinnati\\UC\\Contemporary Programming\\Final Project\\Contemporary-Programming-Final-Project\\Contemporary-Programming-Final-Project.csproj",
+        "projectUniqueName": "C:\\Users\\hanki\\Documents\\GitHub\\Contemporary-Programming-Final-Project\\Contemporary-Programming-Final-Project.csproj",
         "projectName": "Contemporary-Programming-Final-Project",
-        "projectPath": "C:\\Users\\cdero\\OneDrive - University of Cincinnati\\UC\\Contemporary Programming\\Final Project\\Contemporary-Programming-Final-Project\\Contemporary-Programming-Final-Project.csproj",
-        "packagesPath": "C:\\Users\\cdero\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\cdero\\OneDrive - University of Cincinnati\\UC\\Contemporary Programming\\Final Project\\Contemporary-Programming-Final-Project\\obj\\",
+        "projectPath": "C:\\Users\\hanki\\Documents\\GitHub\\Contemporary-Programming-Final-Project\\Contemporary-Programming-Final-Project.csproj",
+        "packagesPath": "C:\\Users\\hanki\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hanki\\Documents\\GitHub\\Contemporary-Programming-Final-Project\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\cdero\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\hanki\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -88,7 +88,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
