@@ -1,7 +1,7 @@
 using Contemporary_Programming_Final_Project.Data;
-using Contemporary_Programming_Final_Project.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using BookModel = Contemporary_Programming_Final_Project.Models.Books;
 
 namespace Contemporary_Programming_Final_Project.Controllers
 {
@@ -19,26 +19,26 @@ namespace Contemporary_Programming_Final_Project.Controllers
         // GET: api/Books
         // Returns first 5 books, or a specific book by ISBN
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Book>>> GetBooks(string? isbn)
+        public async Task<ActionResult<IEnumerable<BookModel>>> GetBooks(long? isbn)
         {
-            if (string.IsNullOrEmpty(isbn))
+            if (!isbn.HasValue)
             {
                 return await _context.Books.Take(5).ToListAsync();
             }
 
-            var book = await _context.Books.FindAsync(isbn);
+            var book = await _context.Books.FindAsync(isbn.Value);
 
             if (book == null)
             {
                 return NotFound();
             }
 
-            return new List<Book> { book };
+            return new List<BookModel> { book };
         }
 
         // GET: api/Books/{isbn}
         [HttpGet("{isbn}")]
-        public async Task<ActionResult<Book>> GetBookByISBN(string isbn)
+        public async Task<ActionResult<BookModel>> GetBookByISBN(long isbn)
         {
             var book = await _context.Books.FindAsync(isbn);
 
@@ -52,9 +52,9 @@ namespace Contemporary_Programming_Final_Project.Controllers
 
         // POST: api/Books
         [HttpPost]
-        public async Task<ActionResult<Book>> PostBook(Book book)
+        public async Task<ActionResult<BookModel>> PostBook(BookModel book)
         {
-            if (string.IsNullOrEmpty(book.ISBN))
+            if (book.ISBN == 0)
             {
                 return BadRequest("ISBN is required");
             }
@@ -67,7 +67,7 @@ namespace Contemporary_Programming_Final_Project.Controllers
 
         // PUT: api/Books/{isbn}
         [HttpPut("{isbn}")]
-        public async Task<IActionResult> PutBook(string isbn, Book updatedBook)
+        public async Task<IActionResult> PutBook(long isbn, BookModel updatedBook)
         {
             if (isbn != updatedBook.ISBN)
             {
@@ -97,7 +97,7 @@ namespace Contemporary_Programming_Final_Project.Controllers
 
         // DELETE: api/Books/{isbn}
         [HttpDelete("{isbn}")]
-        public async Task<IActionResult> DeleteBook(string isbn)
+        public async Task<IActionResult> DeleteBook(long isbn)
         {
             var book = await _context.Books.FindAsync(isbn);
             if (book == null)
@@ -111,7 +111,7 @@ namespace Contemporary_Programming_Final_Project.Controllers
             return NoContent();
         }
 
-        private bool BookExists(string isbn)
+        private bool BookExists(long isbn)
         {
             return _context.Books.Any(e => e.ISBN == isbn);
         }

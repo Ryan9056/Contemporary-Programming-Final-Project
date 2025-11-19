@@ -12,9 +12,9 @@ public class AppDbContext : DbContext
 
     public DbSet<TeamMember> TeamMembers { get; set; } = null!;
 
-    public DbSet<Hobby> Hobbies { get; set; }
+    public DbSet<Hobby> Hobbies { get; set; } = null!;
 
     public DbSet<Class> Classes { get; set; } = null!;
     
-    public DbSet<Book> Books { get; set; } = null!;
+    public DbSet<Books> Books { get; set; } = null!;
 }
