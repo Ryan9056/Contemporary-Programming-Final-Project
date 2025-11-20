@@ -37,19 +37,6 @@ namespace Contemporary_Programming_Final_Project.Controllers
             return new List<TeamMember> { teamMember }; // Return the specific team member
         }
 
-        // GET: api/TeamMembers/{id}
-        [HttpGet("{id}")]
-        public async Task<ActionResult<TeamMember>> GetTeamMemberById(int id)
-        {
-            var teamMember = await _context.TeamMembers.FindAsync(id);
-
-            if (teamMember == null)
-            {
-                return NotFound();
-            }
-
-            return teamMember;
-        }
 
         // POST: api/TeamMembers
         // Only basic fields are required here
@@ -65,7 +52,7 @@ namespace Contemporary_Programming_Final_Project.Controllers
             _context.TeamMembers.Add(teamMember);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetTeamMemberById), new { id = teamMember.Id }, teamMember);
+            return CreatedAtAction(nameof(GetTeamMembers), new { id = teamMember.Id }, teamMember);
         }
 
         // PUT: api/TeamMembers/{id}

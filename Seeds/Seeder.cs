@@ -21,6 +21,11 @@ namespace Contemporary_Programming_Final_Project.Seeds
             {
                 ClassesSeeder.Seed(context);
             }
+
+            if (!context.Books.Any())
+            {
+                BooksSeeder.Seed(context);
+            }
         }
     }
 }

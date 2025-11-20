@@ -1,4 +1,4 @@
-﻿using Contemporary_Programming_Final_Project.Data;
+using Contemporary_Programming_Final_Project.Data;
 using Contemporary_Programming_Final_Project.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -7,49 +7,49 @@ namespace Contemporary_Programming_Final_Project.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class HobbiesController : ControllerBase
+    public class BooksController : ControllerBase
     {
         private readonly AppDbContext _context;
 
-        public HobbiesController(AppDbContext context)
+        public BooksController(AppDbContext context)
         {
             _context = context;
         }
-        // GET: api/Hobbies or api/Hobbies/5
+        // GET: api/Books or api/Books/5
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Hobby>>> GetHobbies(int? id)
+        public async Task<ActionResult<IEnumerable<Book>>> GetBooks(int? id)
         {
             if (id == null || id == 0)
             {
-                return await _context.Hobbies
+                return await _context.Books
                     .Take(5)
                     .ToListAsync();
             }
 
-            var hobby = await _context.Hobbies
-                .Where(h => h.HobbyId == id)
+            var book = await _context.Books
+                .Where(h => h.Id == id)
                 .ToListAsync();
 
-            if (!hobby.Any())
+            if (!book.Any())
             {
                 return NotFound();
             }
 
-            return hobby;
+            return book;
         }
 
 
-        // PUT: api/Hobbies/5
+        // PUT: api/Books/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutHobby(int id, Hobby hobby)
+        public async Task<IActionResult> PutBook(int id, Book book)
         {
-            if (id != hobby.HobbyId)
+            if (id != book.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(hobby).State = EntityState.Modified;
+            _context.Entry(book).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +57,7 @@ namespace Contemporary_Programming_Final_Project.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!HobbyExists(id))
+                if (!BookExists(id))
                 {
                     return NotFound();
                 }
@@ -70,38 +70,38 @@ namespace Contemporary_Programming_Final_Project.Controllers
             return NoContent();
         }
 
-        // POST: api/Hobbies
+        // POST: api/Books
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Hobby>> PostHobby(Hobby hobby)
+        public async Task<ActionResult<Book>> PostBook(Book book)
         {
-            _context.Hobbies.Add(hobby);
+            _context.Books.Add(book);
             await _context.SaveChangesAsync();
 
             // Simple success response – no route generation
-            return Ok(hobby);
+            return Ok(book);
         }
 
 
-        // DELETE: api/Hobbies/5
+        // DELETE: api/Books/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteHobby(int id)
+        public async Task<IActionResult> DeleteBook(int id)
         {
-            var hobby = await _context.Hobbies.FindAsync(id);
-            if (hobby == null)
+            var book = await _context.Books.FindAsync(id);
+            if (book == null)
             {
                 return NotFound();
             }
 
-            _context.Hobbies.Remove(hobby);
+            _context.Books.Remove(book);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool HobbyExists(int id)
+        private bool BookExists(int id)
         {
-            return _context.Hobbies.Any(e => e.HobbyId == id);
+            return _context.Books.Any(e => e.Id == id);
         }
     }
 }
